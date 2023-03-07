@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintDeck-SignUp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/sigup-css.css">
+    
+</head>
+<body>
+
+        <div class="background">        </div>
+    <nav id="nav-bar">
+        <div id="item1">
+            <img src="./Images/logo.png" alt="logo" srcset="">
+        </div>
+        <div id="item2">
+            <ul class="nav-items">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Orders</a></li>
+            </ul>
+        </div>
+        <div id="item3">
+            <a href="/login">
+                <button>Login</button>
+            </a>
+        </div>
+    </nav>
+    <section class="container">
+        <div class="login">
+            <h1 class="prime">
+                Create an Account
+            </h1>
+            <p>Let's get started. Fill your credentials here to proceed</p>
+        </div>
+        <div class="content">
+            <img src="./Images/college boy.png" alt="" srcset="">
+            <h2 class="text">Sign up now and get your worksheets and stuffs printed!</h2>
+        </div>
+    </section>
+    <form action="/signup" method="post">
+        <div class="login-form">
+                <input type="text" name="name" placeholder="Name" class="cred">
+                <input type="email" name="email" placeholder="Email" class="cred">
+                <input type="password" name="password" placeholder="Password" class="cred">
+                <input type="password" name="cpassword" placeholder="Confirm Password" class="cred">
+                <input class="submit" value="Create Account" type="submit">
+        </div>
+    </form>
+        
+</body>
+</html>

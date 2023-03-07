@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintDeck-Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/login-css.css">
+</head>
+<body>
+    <div class="background">        </div>
+    <nav id="nav-bar">
+        <div id="item1">
+            <img src="./Images/logo.png" alt="logo" srcset="">
+        </div>
+        <div id="item2">
+            <ul class="nav-items">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Orders</a></li>
+            </ul>
+        </div>
+        <div id="item3">
+            <a href="/signup"><button>SignUp</button></a>
+        </div>
+    </nav>
+    <section class="container">
+        <div class="cont1">
+            <img src="./Images/login-college.png" alt="" srcset="">
+            <h2 class="tagline">
+                Place your order from the classrooms/hostels <br> and collect it in just 1 hour.
+            </h2>
+        </div>
+        <div class="cont2">
+            <div class="material">
+                <h1 class="prime">
+                    Hello Mate'
+                </h1>
+                <p class="text">To use our services, you've to login through your Email and Password</p>
+                <form action="/login" method="post">
+                    <div class="form">
+                        <input name= "email" type="email" placeholder="Email Address" style="margin-top: 25px;" >
+                        <input name= "password" type="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="submit">Login</button>
+                </form>
+                
+            </div>
+           
+        </div>
+    </section>
+</body>
+</html>
