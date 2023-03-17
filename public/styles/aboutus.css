@@ -1,0 +1,129 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.base{
+    min-height: 100vh;  
+    min-width: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../Images/bg.png");
+    
+}
+
+#navbar{
+    display: flex;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 96%;
+    justify-content: space-between;
+}
+.logo img{
+    height: 5.5rem;
+    width: 7rem;
+}
+
+.nav-items{
+    display: flex;
+    align-items: center;
+}
+
+.nav-items ul{
+    display: flex;
+    font-size: 1.2rem;
+
+}
+.nav-items li{
+    list-style: none;
+    margin: 0px 5px;
+    text-align: center;
+}
+.nav-items a{
+    padding: 0vh 2vh;
+    color: black;
+}
+
+.signout{
+    display: flex;
+    align-items: center;
+}
+.signout button{
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: orange;
+}
+
+.content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    display: flex;
+    width: 70%;
+    margin: 25px;
+    padding: 0px 30px;
+    background-color: rgba(22, 22, 22, 0.473) ;
+    border-radius: 20px;
+}
+
+.details{
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.prim{
+    display: block;
+    font-size: 3rem;
+    /* animation: fade 8000ms infinite; */
+    color: white;
+    font-weight: 900;
+}
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+p{
+    /* animation: fade 8000ms infinite; */
+    font-size: 1.5rem;
+    color: white;
+    line-height: 40px;
+}
+
+#image{
+    /* animation: fade 8000ms infinite; */
+    height: 30rem;
+    width: 20rem;
+    right: 3%;
+
+}
+.img{
+    margin-left: 15%;
+}
+.social{
+    border: 2px solid black;
+    padding: 5px 20px;
+    margin: 5px;
+    width: 100px;
+    margin-left: 2%;
+    margin-top: 15%;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    background-color: rgba(17, 108, 219, 0.856);
+    display: block;
+    margin: auto;
+}

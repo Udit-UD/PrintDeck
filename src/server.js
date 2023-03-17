@@ -5,6 +5,7 @@ require("./db/Credentials")
 const Auth = require("./models/Creds");
 const bcrypt = require("bcrypt");
 const rte=require('../routes/auth.route')
+const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 8000;
 
 const static_path = path.join(__dirname, "../public");
@@ -15,10 +16,10 @@ app.use(express.urlencoded({extended:false}));
 
 
 app.set("view engine", "hbs")
-app.use('/',rte);
-// app.get("/", (req, res) => {
-//     res.status(201).render("login");
-// })
+app.get("/", (req, res) => {
+    console.log(`The cookie is: ${res.cookie.jwt}`);
+    res.status(201).render("login");
+})
 
 // ----------LOGIN------------
 
@@ -33,6 +34,11 @@ app.post("/login", async(req, res) => {
         const password = req.body.password;
         const details = await Auth.findOne({email: email});
         const isMatch = bcrypt.compare(password, details.password);
+        const token = await details.generateAuthToken();
+        res.cookie("jwt", token, {
+            expires: new Date(Date.now() + 100000),
+            httpOnly: true
+        })
 
         if(isMatch){
             res.status(200).render("home", {name: details.name});
@@ -41,6 +47,7 @@ app.post("/login", async(req, res) => {
         }
     } catch (e) {
         res.status(400).send(e);
+        console.log("Error"+e);
     }
 })
 
@@ -62,7 +69,12 @@ app.post("/signup", async(req, res) => {
             });
             const nameOfUser = req.body.name;
             const token = await newUser.generateAuthToken();
+            
             const details = await newUser.save();
+            res.cookie("jwt", token, {
+                expires: new Date(Date.now() + 30000),
+                httpOnly: true
+            })
             res.status(201).render("login");
         }
     } catch (e) {
