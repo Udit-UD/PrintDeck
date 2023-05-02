@@ -4,21 +4,26 @@ const path= require('path')
 require("./db/Credentials")
 const Auth = require("./models/Creds");
 const bcrypt = require("bcrypt");
-const rte=require('../routes/auth.route')
 const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 8000;
+const auth = require("./Middleware/auth")
 
 const static_path = path.join(__dirname, "../public");
 
 app.use(express.static(static_path));
 app.use(express.json());
+app.use(cookieParser())
 app.use(express.urlencoded({extended:false}));
 
 
 app.set("view engine", "hbs")
+
 app.get("/", (req, res) => {
-    console.log(`The cookie is: ${res.cookie.jwt}`);
     res.status(201).render("login");
+})
+app.get('/accessed', auth ,(req, res) => {
+    console.log(`The cookie is: ${req.cookies.jwt}`);
+    res.status(201).render("index");
 })
 
 // ----------LOGIN------------
@@ -35,13 +40,14 @@ app.post("/login", async(req, res) => {
         const details = await Auth.findOne({email: email});
         const isMatch = bcrypt.compare(password, details.password);
         const token = await details.generateAuthToken();
-        res.cookie("jwt", token, {
-            expires: new Date(Date.now() + 100000),
-            httpOnly: true
-        })
 
+        res.cookie("jwt", token, {
+            expires: new Date(Date.now() + 10000),
+            httpOnly: true, 
+            // secure: true
+        })
         if(isMatch){
-            res.status(200).render("home", {name: details.name});
+            res.status(200).render("home");
         }else{
             res.send("Invalid Credentials!");
         }
@@ -68,11 +74,13 @@ app.post("/signup", async(req, res) => {
                 password: req.body.password,
             });
             const nameOfUser = req.body.name;
-            const token = await newUser.generateAuthToken();
-            
             const details = await newUser.save();
+            console.log(details)
+            const token = await newUser.generateAuthToken();
+            console.log(`The token is: ${token}`)
+            console.log("Saved!")
             res.cookie("jwt", token, {
-                expires: new Date(Date.now() + 30000),
+                expires: new Date(Date.now() + 10000),
                 httpOnly: true
             })
             res.status(201).render("login");
@@ -81,7 +89,6 @@ app.post("/signup", async(req, res) => {
         res.status(400).send(e);
     }
 })
-
 
 
 app.listen(port, ()=>{
