@@ -9,29 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/sigup-css.css">
+    <link rel="stylesheet" href="./styles/header.css">
+
     
 </head>
 <body>
 
-        <div class="background">        </div>
-    <nav id="nav-bar">
-        <div id="item1">
-            <img src="./Images/logo.png" alt="logo" srcset="">
-        </div>
-        <div id="item2">
-            <ul class="nav-items">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Orders</a></li>
-            </ul>
-        </div>
-        <div id="item3">
-            <a href="/login">
-                <button>Login</button>
-            </a>
-        </div>
-    </nav>
+    <div class="background">        </div>
+    {{>header Link= "/login" tag= "Login"}}
     <section class="container">
         <div class="login">
             <h1 class="prime">
@@ -46,13 +31,29 @@
     </section>
     <form action="/signup" method="post">
         <div class="login-form">
-                <input type="text" name="name" placeholder="Name" class="cred">
-                <input type="email" name="email" placeholder="Email" class="cred">
-                <input type="password" name="password" placeholder="Password" class="cred">
-                <input type="password" name="cpassword" placeholder="Confirm Password" class="cred">
+                <input type="text" name="name" placeholder="Name" required class="cred">
+                <input type="email" name="email" placeholder="Email" required class="cred">
+                <input type="password" name="password" id="myInput" placeholder="Password" required class="cred">
+                <input type="password" name="cpassword" placeholder="Confirm Password" required class="cred">
+                <span class="checkBox">
+                    <input type="checkbox" onclick="showPass()"> <p> Show Password </p>
+                </span>
                 <input class="submit" value="Create Account" type="submit">
         </div>
     </form>
         
 </body>
+
+<script>
+    function showPass(){
+        console.log("Running...")
+        let text = document.getElementById("myInput");
+        if(text.type === "password"){
+            text.type = "text";
+        }else{
+            text.type = "password";
+        }
+    }
+    
+</script>
 </html>
