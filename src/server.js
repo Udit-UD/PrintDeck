@@ -44,21 +44,20 @@ app.post("/login", async(req, res) => {
         const email = req.body.email;
         const password = req.body.password;
         const details = await Auth.findOne({email: email});
-        const isMatch = bcrypt.compare(password, details.password);
+        const isMatch = await bcrypt.compare(password, details.password);
         const token = await details.generateAuthToken();
 
         res.cookie("jwt", token, {
             expires: new Date(Date.now() + 10000),
             httpOnly: true, 
-            // secure: true
         })
         if(isMatch){
             res.status(200).render("home");
         }else{
-            res.send("Invalid Credentials!");
+            res.render("login", {error: "Password Incorrect!"});
         }
     } catch (e) {
-        res.status(400).send(e);
+        res.status(400).render("login", {error:"Incorrect Credentials"});
         console.log("Error"+e);
     }
 })
@@ -79,7 +78,6 @@ app.post("/signup", async(req, res) => {
                 email: req.body.email,
                 password: req.body.password,
             });
-            const nameOfUser = req.body.name;
             const details = await newUser.save();
             console.log(details)
             const token = await newUser.generateAuthToken();
@@ -91,8 +89,11 @@ app.post("/signup", async(req, res) => {
             })
             res.status(201).render("login");
         }
+        else{
+            res.status(200).render("signup", {error: "Password doesn't match!"});
+        }
     } catch (e) {
-        res.status(400).send(e);
+        res.status(400).render("signup");
     }
 })
 

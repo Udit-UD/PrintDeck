@@ -27,7 +27,6 @@
 }
 
 .logo {
-    /* display: inline-block; */
     left: 34px;
     top: 0px;
 }
@@ -38,22 +37,22 @@
 }
 
 #long {
-    font-family: 'Tilt Neon', cursive;
+    font-family: 'Golos Text', sans-serif;
 }
 
 #Printing {
-    font-family: 'Tilt Neon', cursive;
+    font-family: 'Golos Text', sans-serif;
     padding: 13px 0px;
 }
 
 #PrintDeck {
-    font-family: 'Tilt Neon', cursive;
+    font-family: 'Golos Text', sans-serif;
     padding: 5px 0px;
 
 }
 
 .heading {
-    font-family: 'Tilt Neon', cursive;
+    font-family: 'Golos Text', sans-serif;
     font-size: x-large;
 
 
@@ -61,7 +60,6 @@
 
 .get {
 
-    /* position: absolute; */
     bottom: 100px;
 
     padding: 33px 0px;
@@ -89,7 +87,7 @@
     }
 
     25% {
-        color: rgba(140, 126, 18, 0.884);
+        color: rgba(255, 255, 255, 0.884);
     }
 
     from {
@@ -98,8 +96,7 @@
     }
 
     100% {
-        /* color: rgb(36, 138, 140); */
-        background-color: antiquewhite;
+        background-color: rgb(53, 181, 232);
 
     }
 }
@@ -119,18 +116,19 @@
 
 .GET {
     border: 0px white;
+    color: white;
     padding: 19px 7px;
     margin: 9px 28px;
     font-size: 23px;
     border-radius: 11px;
-    background-color: rgba(49, 216, 119, 0.541);
+    background-color: rgb(218 89 31);
     width: 150px;
 
 
 }
 
 .GET:hover {
-    color: rgb(36, 11, 11);
+    color: rgb(255, 255, 255);
     cursor: pointer;
     animation-name: GET;
     animation-duration: 2s;
@@ -152,8 +150,8 @@
 }
 
 .bimg img {
-    width: 476px;
-    height: 456px;
+    width: 518px;
+    height: 490px;
     filter: brightness(100%);
     border-top-left-radius: 191px;
     border-top-right-radius: 150px;
