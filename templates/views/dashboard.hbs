@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/dashboard.css">
+    <!-- <link rel="stylesheet" href="../../public/styles/dashboard.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    
+    
+</head>
+<body>
+    {{!-- <div class="background">
+        
+    </div> --}}
+
+    {{>header Link= "/login" tag= "Logout"}}
+
+    <section class="container">
+        <div id= "parts" class="section-1">
+            <h1 class="primary">Upload Your Document Here</h1>
+            <h3 class="secondary">PDF format is preferable to avoid any inconvenience</h3>
+        </div>
+        <div id= "parts" class="section-2">
+            <input type="file" accept=".pdf,.docx" id="file-upload" />
+            <label for="file-upload">Upload File</label>
+            <p class="secondary" style="font-size: 0.9rem;" id="file-name"></p>
+        </div>
+        
+        <div id= "parts" class="section-3" >
+
+            <a href="/checkout">
+                <button type="submit" class="proceed-btn">Proceed To The Order</button>
+            </a>
+        </div>
+    </section>
+    
+</body>
+<script>
+    const fileUpload = document.getElementById('file-upload');
+    const fileNameDisplay = document.getElementById('file-name');
+
+    fileUpload.addEventListener('change', function() {
+        const files = this.files;
+        if (files.length > 0) {
+            fileNameDisplay.textContent = files[0].name;
+        } 
+        else {
+            fileNameDisplay.textContent = '';
+        }
+    });
+
+</script>
+</html>

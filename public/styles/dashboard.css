@@ -1,0 +1,95 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    /* overflow: hidden; */
+}
+
+.background{
+    position: absolute;
+    background-color: #ABD9E3;
+    min-height: 69vh;
+    width: 80%;
+    right: 10%;
+    left: 10%;
+    z-index: -1;
+    border-bottom-left-radius: 1000px;
+    border-bottom-right-radius: 1000px;
+
+}
+
+.container{
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#parts{
+    padding: 2vh;
+    position: relative;
+    height: 20vh;
+    text-align: center;
+}
+
+.section-1{
+    margin: 12px;
+}
+.primary{
+    font-family: 'Golos Text', sans-serif;
+    font-size: 2.0rem;
+    color: rgb(56, 53, 53);
+}
+
+.secondary{
+    font-family: 'Golos Text', sans-serif;
+    font-weight: 100;
+    padding: 5px;
+    color: rgb(76, 74, 74);
+}
+
+
+.section-2 input[type="file"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.section-2 label {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'Golos Text', sans-serif;
+    border-radius: 10px;
+    width: 50vh;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+
+.section-2 label:hover {
+background-color: #2980b9;
+}
+
+.section-3{
+    padding: 5px;
+}
+.proceed-btn{
+    width: 55.5vh;
+    height: 80%;
+    /* background-color: rgb(29, 146, 29); */
+    background-color: #f05c1c;
+    color: #fff;
+    font-family: 'Golos Text', sans-serif;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.proceed-btn:hover{
+    cursor: pointer;
+    background-color: #c7460f;
+}

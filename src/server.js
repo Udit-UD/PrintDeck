@@ -27,10 +27,7 @@ hbs.registerPartials(partial_path);
 app.get("/", (req, res) => {
     res.status(201).render("login");
 })
-app.get('/accessed', auth ,(req, res) => {
-    console.log(`The cookie is: ${req.cookies.jwt}`);
-    res.status(201).render("index");
-})
+
 
 // ----------LOGIN------------
 
@@ -45,10 +42,11 @@ app.post("/login", async(req, res) => {
         const password = req.body.password;
         const details = await Auth.findOne({email: email});
         const isMatch = await bcrypt.compare(password, details.password);
+        
         const token = await details.generateAuthToken();
 
         res.cookie("jwt", token, {
-            expires: new Date(Date.now() + 10000),
+            expires: new Date(Date.now() + 60000),
             httpOnly: true, 
         })
         if(isMatch){
@@ -84,7 +82,7 @@ app.post("/signup", async(req, res) => {
             console.log(`The token is: ${token}`)
             console.log("Saved!")
             res.cookie("jwt", token, {
-                expires: new Date(Date.now() + 10000),
+                expires: new Date(Date.now() + 60000),
                 httpOnly: true
             })
             res.status(201).render("login");
@@ -95,6 +93,19 @@ app.post("/signup", async(req, res) => {
     } catch (e) {
         res.status(400).render("signup");
     }
+})
+
+
+// Pages after Authentications!
+
+app.get('/accessed', auth ,(req, res) => {
+    console.log(`The cookie is: ${req.cookies.jwt}`);
+    res.status(201).render("index");
+})
+
+app.get('/dashboard', auth, (req, res) => {
+
+    res.status(201).render("dashboard")
 })
 
 
