@@ -1,7 +1,6 @@
 *{
     padding: 0px;
     margin: 0px;
-    /* overflow: hidden; */
 }
 
 .background{
@@ -18,23 +17,34 @@
 }
 
 .container{
-    height: 50vh;
+    width: 99%;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-#parts{
+#section-1{
     padding: 2vh;
     position: relative;
-    height: 20vh;
+    height: 20%;
+    width: 100%;
     text-align: center;
-}
-
-.section-1{
     margin: 12px;
 }
+
+
+#section-2{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
 .primary{
     font-family: 'Golos Text', sans-serif;
     font-size: 2.0rem;
@@ -48,39 +58,70 @@
     color: rgb(76, 74, 74);
 }
 
+.form{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    height: 90%;
+}
+.part-1{
+    height: 100%;
+    position: relative;
+    width: 45%;
+    margin-left: 15px;
+}
 
-.section-2 input[type="file"] {
+#section-2 input[type="file"] {
     position: absolute;
     opacity: 0;
 }
 
-.section-2 label {
+.file-label {
+    border: 5px dashed white ;
     display: inline-block;
     padding: 10px 20px;
     font-family: 'Golos Text', sans-serif;
     border-radius: 10px;
-    width: 50vh;
-    height: 60%;
+    width: 90%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    background-color: #3498db;
+    background-color: #88cfde;
     color: #fff;
     cursor: pointer;
 }
 
-.section-2 label:hover {
-background-color: #2980b9;
+#section-2 .file-label:hover {
+background-color: #42a3e3;
 }
 
-.section-3{
+.part-2{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 100%;
+    margin: 20px 5px;
+    position: relative;
+}
+.min-span{
+    display: flex;
+    padding: 7px;
+    align-items: center;
     padding: 5px;
 }
+.min-span>label{
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
 .proceed-btn{
-    width: 55.5vh;
-    height: 80%;
-    /* background-color: rgb(29, 146, 29); */
+    position: absolute;
+    bottom: 0%;
+    width: 90%;
+    height: 20%;
     background-color: #f05c1c;
     color: #fff;
     font-family: 'Golos Text', sans-serif;

@@ -1,8 +1,8 @@
-// const express=require('express');
-// const route=express.Router();
+const express=require('express');
+const router=express.routerr();
+const auth = require("../src/Controllers/Auth.controller")
 
-// route.get('/',(req,res)=>{
-//     res.json(login);
-// })
+router.post("/signup", auth.signUp);
+router.post("/login", auth.login);
 
-// module.exports=route;
+module.exports=router;

@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/dashboard.css">
-    <!-- <link rel="stylesheet" href="../../public/styles/dashboard.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
@@ -17,29 +16,55 @@
     
 </head>
 <body>
-    {{!-- <div class="background">
-        
-    </div> --}}
 
-    {{>header Link= "/login" tag= "Logout"}}
+
+    {{>header Link= "/logout" tag= "Logout"}}
 
     <section class="container">
-        <div id= "parts" class="section-1">
+        <div class= "parts" id="section-1">
             <h1 class="primary">Upload Your Document Here</h1>
-            <h3 class="secondary">PDF format is preferable to avoid any inconvenience</h3>
+            <h3 class="secondary">Upload only PDF format here!</h3>
         </div>
-        <div id= "parts" class="section-2">
-            <input type="file" accept=".pdf,.docx" id="file-upload" />
-            <label for="file-upload">Upload File</label>
-            <p class="secondary" style="font-size: 0.9rem;" id="file-name"></p>
+        <div class= "parts" id="section-2">
+            <form action="/upload" method="post" enctype="multipart/form-data" class="form">
+                <div class="part-1">
+                    <input type="file" class="file-upload" name="fileName" required accept=".pdf" id="file-upload" />
+                    <label for="file-upload" class="file-label" id="file-name">
+                        Upload File
+                    </label>   
+                    <p>None</p>
+                </div>
+
+                <div class="part-2">
+                    <h3 class="secondary" style="font-size: 1.5rem; font-weight: 400;">Enter your preferences here: </h3>
+                    <span class="min-span">
+                        <h3 class="secondary">Color Preference: </h3>
+                        <label>
+                            <input type="radio" required name="Preferences" id="radio" value="Black&White" style="font-size: 1.2rem;">Black and White
+                        </label>
+                        <label>
+                            <input type="radio" required name="Preferences" id="radio" value="Colored" style="font-size: 1.2rem;">Colored
+                        </label>
+                    </span>
+                    <span class="min-span">
+                        <h3 class="secondary">Stationary Shop: </h3>
+                        <label>
+                            <input type="radio" required name="Stationary" id="radio" value="NCT-4" style="font-size: 1.2rem;">NCT-4
+                        </label>
+                        <label>
+                            <input type="radio" required name="Stationary" id="radio" value="Tagore" style="font-size: 1.2rem;">Tagore
+                        </label>
+                        <label>
+                            <input type="radio" required name="Stationary" id="radio" value="C3" style="font-size: 1.2rem;">C3
+                        </label>
+                    </span>
+                    <button type="submit" value="submit" class="proceed-btn">Proceed To The Order</button>
+                </div>
+            </form>
+
         </div>
         
-        <div id= "parts" class="section-3" >
 
-            <a href="/checkout">
-                <button type="submit" class="proceed-btn">Proceed To The Order</button>
-            </a>
-        </div>
     </section>
     
 </body>

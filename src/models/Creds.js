@@ -29,7 +29,11 @@ const dataSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    }] 
+    }] , 
+    order_IDs:{
+        type: [String], 
+        default: [],
+    }
 })
 
 dataSchema.methods.generateAuthToken = async function(){
