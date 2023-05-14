@@ -1,0 +1,134 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.main{
+    position: absolute;
+    z-index: -1;
+    top: 0%;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ABD9E3;
+
+}
+
+.container{
+    height: 65vh;
+    position: relative;
+    display: flex;
+    width: 60%;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.534);
+}
+
+#sec1{
+    width: 60%;
+    padding: 30px;
+
+}
+.primary{
+    font-family: 'Golos Text', sans-serif;
+
+    color: rgb(38, 38, 38);
+    font-size: 2.0rem;
+}
+
+.secondary{
+    font-family: 'Inter';
+    color: rgb(49, 49, 49);
+    font-size: 1.0rem;
+    font-weight: 600;
+}
+
+#part2{
+    margin: 25px 0px;
+    padding: 10px 5px;
+    height: 60%;
+    display: flex;
+}
+
+table{
+    width: 90%;
+    height: 50%;
+}
+.values{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.heading{
+    font-family: 'Golos Text', sans-serif;
+    font-weight: 700;
+    text-decoration: underline;
+    color: rgb(32, 32, 32);
+    font-size: 1.2rem;
+    margin-right: 2%;
+    padding: 0%;
+
+}
+.values{
+    font-family: 'Golos Text', sans-serif;
+    font-weight: 600;
+
+    color: rgb(55, 55, 55);
+    font-size: 1.2rem;
+    margin-right: 2%;
+    padding: 0%;
+}
+
+#part3{
+    width: 100%;
+    display: flex;
+}
+#part3 > button{
+    width: 44%;
+    padding: 10px;
+    border: 0px;
+    font-family: 'Golos Text', sans-serif;
+    margin: 0px 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    background-color: rgb(16, 161, 16);
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: white;
+}
+#part3 > form >.terminate{
+    width: 90%;
+    padding: 10px;
+    border: 0px;
+    font-family: 'Golos Text', sans-serif;
+    margin: 0px 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    background-color: rgb(219, 78, 78);
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: white;
+}
+form{
+    width: 44%;
+}
+#part3> button:hover{
+    background-color: green;
+}
+#part3 > form >.terminate:hover{
+    background-color: rgb(234, 18, 18);
+}
+
+#sec2{
+    width: 50%;
+    margin: 0px;
+    padding: 0px;
+}
+#sec2>img{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}

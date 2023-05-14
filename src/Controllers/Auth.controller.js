@@ -1,5 +1,7 @@
 const Auth = require("../models/Creds");
+const Stationary = require("../models/Stationary_Creds");
 const bcrypt = require("bcrypt");
+const mongoose = require("mongoose")
 const createError = require('http-errors');
 
 module.exports = {
@@ -67,5 +69,34 @@ module.exports = {
         } catch (e) {
             res.status(400).render("login", {error: e });
         }
-    }
+    },
+    mlogin: async(req, res) => {
+        try {
+            const email = req.body.email;
+            const password = req.body.password;
+            console.log(email, " ", password);
+            const details = await Stationary.findOne({email: email});
+            if(!details){
+                throw createError.NotFound("User not registered!");
+            }
+
+            const isMatch = await bcrypt.compare(password, details.password);
+            const token = await details.generateAuthToken();
+    
+            res.cookie("jwt", token, {
+                expires: new Date(Date.now() + 60*60*100),
+                httpOnly: true, 
+            });
+
+            if(isMatch){
+                res.status(200).render("mhome");
+            }else{
+                throw createError.Unauthorized("Password is incorrect!");
+            }
+
+        } catch (e) {
+            res.status(400).render("mlogin", {error: e });
+        }
+    },
+
 }

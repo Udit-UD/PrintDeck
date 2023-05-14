@@ -4,9 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PrintDeck | Checkout</title>
+    <link rel="stylesheet" href="./styles/checkout.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
 </head>
-<body>
-    uploaded!
+<body> 
+    {{>header Link= "/logout" tag= "Logout"}}
+    <div class="main">
+
+        <div class="container">
+            <section id="sec1">
+                <div id="part1">
+                    <h1 class="primary">Checkout the details</h1>
+                    <h3 class="secondary">After payment, you can collect your order in 1 hour!</h3>
+                </div>
+                <div id="part2">
+                    <table>
+                        <tbody>
+                          <tr>
+                            <td class="heading">Name</td>
+                            <td class="values">{{fileName}}</td>
+                          </tr>
+                          <tr>
+                            <td class="heading">Stationary</td>
+                            <td class="values">{{stationary}}</td>
+                          </tr>
+                          <tr>
+                            <td class="heading">Color Preference</td>
+                            <td class="values">{{colorPreference}}</td>
+                          </tr>
+                          <tr>
+                            <td class="heading">Number of Pages</td>
+                            <td class="values">{{numPages}} pages</td>
+                          </tr>
+                          <tr>
+                            <td class="heading">Total Amount</td>
+                            <td class="values">{{price}}rs</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div id="part3">
+                    <button type="submit">Proceed To Payment</button>
+                    
+                    <form action="/terminate" method="POST">
+                        <button type="submit"  class="terminate">Go Back</button>
+                    </form>
+    
+                </div>
+            </section>
+            <section id="sec2">
+                <img src="./Images/Checkout.png" alt="" srcset="">
+            </section>
+            
+        </div>
+    </div>
+    
 </body>
 </html>

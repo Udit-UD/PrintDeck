@@ -16,7 +16,19 @@ const uploadSchema = new mongoose.Schema({
     stationary:{
         type: String,
         enum: ["NCT-4", "C3", "Tagore"],
-
+    },
+    fileData: {
+        type: Buffer,
+    },
+    numPages: {
+        type: Number,
+    },
+    price: {
+        type: Number,
+    }, 
+    orderStatus: {
+        type: Boolean,
+        default: false
     }
 });
 
