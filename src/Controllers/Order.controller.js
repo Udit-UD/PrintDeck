@@ -12,7 +12,7 @@ module.exports = {
                   orderId: doc._id,
                   fileName: doc.fileName,
                   UserName: name.name,
-                  preference: doc.preference,
+                  preference: doc.preferences,
                   price: doc.price,
                   stationary: doc.stationary
                 });

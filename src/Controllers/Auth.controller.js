@@ -32,7 +32,7 @@ module.exports = {
                 console.log(`The token is: ${token}`)
                 console.log("Saved!")
                 res.cookie("jwt", token, {
-                    expires: new Date(Date.now() + 60000),
+                    expires: new Date(Date.now() + 5*60*60*100),
                     httpOnly: true
                 })
                 res.status(201).render("login");
@@ -51,7 +51,6 @@ module.exports = {
             const password = req.body.password;
             const details = await Auth.findOne({email: email});
             const name = details.name;
-            console.log(name);
             if(!details){
                 throw createError.NotFound("User not registered!");
             }
@@ -60,7 +59,7 @@ module.exports = {
             const token = await details.generateAuthToken();
     
             res.cookie("jwt", token, {
-                expires: new Date(Date.now() + 60*60*100),
+                expires: new Date(Date.now() + 5*60*60*100),
                 httpOnly: true, 
             })
             if(isMatch){
@@ -86,12 +85,12 @@ module.exports = {
             const token = await details.generateAuthToken();
     
             res.cookie("jwt", token, {
-                expires: new Date(Date.now() + 60*60*100),
+                expires: new Date(Date.now() + 5*60*60*100),
                 httpOnly: true, 
             });
 
             if(isMatch){
-                res.status(200).render("mhome");
+                res.redirect(300, "/mdashboard");
             }else{
                 throw createError.Unauthorized("Password is incorrect!");
             }

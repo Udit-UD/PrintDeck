@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
     res.status(201).render("login");
 })
 
-app.get("/home", (req, res) => {
+app.get("/home", auth ,(req, res) => {
     res.status(201).render("home");
 })
 
@@ -93,8 +93,13 @@ app.get('/vieworders',auth, async(req, res) => {
     orderController.clientOrder(req, res, userID);
 })
 
+
 app.get('/dashboard', auth, (req, res) => {
     res.status(201).render("dashboard");
+})
+
+app.get("/success", auth, (req, res) => {
+    res.status(201).render("orderPlaced");
 })
 
 app.get("/aboutus",auth, (req, res) => {
@@ -114,6 +119,7 @@ app.post("/upload", auth, upload.single("fileName") , async(req, res) => {
         console.log(e); 
     }
 })
+
 
 app.post("/terminate", (req, res)=> {
     orderController.terminateOrder(req, res);

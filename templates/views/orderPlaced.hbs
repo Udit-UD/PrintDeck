@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+    <style>
+        /* Styling for the pop-up message */
+        h1{
+            font-size: 1.5rem;
+            color: green;
+
+        }
+        button{
+            padding: 5px;
+            width: 100px;
+            color: green;
+            border: 2px solid rgb(195, 194, 194);
+            border-radius: 4px;
+
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order Confirmation Page</h1>
+
+    <!-- Pop-up message container -->
+    <div id="popupContainer" class="popup">
+        <h2>Order Confirmed!</h2>
+        <p>Your order has been successfully confirmed.</p>
+    </div>
+
+    <!-- Button to trigger the pop-up message -->
+    <button onclick="showPopupAndRedirect()">Confirm Order</button>
+
+    <script>
+        // Function to display the pop-up message
+        function showPopupAndRedirect() {
+            var popup = document.getElementById("popupContainer");
+            popup.style.display = "block";
+            
+            // Redirect to the desired URL after 3 seconds (adjust the time delay as needed)
+            setTimeout(function() {
+                window.location.href = "http://localhost:8000/vieworders"; // Replace with your desired URL
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

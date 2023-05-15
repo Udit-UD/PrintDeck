@@ -4,51 +4,206 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mDashboard</title>
+    <title>shopkeeper</title>
+    <style>
+        *{
+        margin: 0px;
+        padding:0px;
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+        }
+        .logo img{
+        margin: 10px;
+        width:125px;
+        }
+
+    .navbar{
+    display: inline;
+    padding: 592px;
+    font-size: 22px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 20px;
+
+    }
+    a{
+        text-decoration: none;
+        color: rgb(67, 22, 22);
+
+    }
+    .container{
+        height: auto;
+    }
+    .heading{
+    position: relative;
+    padding: 9px 82px;
+    left :-66px;
+    font-size: 1.2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 15px 0px;
+    color:rgb(67, 22, 22) ;
+    }
+    .backgr{
+        position:absolute;
+        /* display: inline-block; */
+        width: 100%;
+        height: 300px;
+        top:0px;
+        left: 0px;
+        z-index: -1;
+        background: #ABD9E3;
+        border-radius: 15px 15px 100px 100px;
+        opacity: 100%;
+    }
+    table{
+        margin: 2%;
+        margin-left: 5%;
+        width: 90%;
+        border: 2px solid black;
+    }
+    thead{
+        padding: 20px;
+        font-size: 1.5rem;
+        color: rgb(55, 67, 72);
+    }
+    tbody > tr{
+        height: 120px;
+    }
+
+    td{
+        text-align: center;
+        border: 2px solid black;
+        width: auto;
+        color: green;
+        padding: 2px 0px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+
+    button{
+        padding: 3px 5px;
+        width: 100px;
+        border-radius: 10px;
+        border: 2px solid white;
+        background-color: rgb(28, 156, 28);
+        color: white;
+        margin: 2px;
+        cursor: pointer;
+    }
+    .complete{
+        background-color: rgb(28, 156, 28);
+        color: white;
+    }
+    .cancel{
+        background-color: rgb(52, 51, 53);
+        color: white;
+        margin-bottom: 8px;
+    }
+    #download{
+        color: white;
+        border: 2px solid black;
+        border-radius: 10px;
+        /* margin: 3px 2px; */
+        padding: 2px 12px;
+        background-color: rgb(255, 4, 4);
+
+    }
+    .logout{
+        background-color: rgb(255, 142, 22); 
+        position: absolute;
+        right: 5%;
+        padding: 5px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 25px;
+    }
+
+    .backgr2{
+        position:absolute;
+        width: 100%;
+        height: 400px;
+        bottom: 0%;
+        left: 0px;
+        z-index: -1;
+        background: #ABD9E3;
+        border-radius: 90px 100px 0px 0px;
+        opacity: 100%;
+    }
+    .greet{
+        font-size: 2.0rem;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color:rgb(67, 22, 22) ;
+    }
+    </style>
 </head>
 <body>
-    <table>
-        <%if(orders.length > 0) {%>
-        <thead>
-            <tr>
-                <th>OrderId</th>
-                <th>User Name</th>
-                <th>File Name</th>
-                <th>Stationary</th>
-                <th>Preference</th>
-                <th>Price</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-                <%orders.forEach((data) => {%>
-                    <tr>
-                        <td><%= data.orderId%></td>
-                        <td><%= data.UserName%></td>
-                        <td><%= data.fileName%></td>    
-                        <td><%= data.stationary%></td>
-                        <td><%= data.preference%></td>
-                        <td><%= data.price%></td>
-                        <td>
-                            <form action="/delete" method="post">
-                                <input type="hidden" name="orderId" value="<%= data.orderId %>">
-                                <button type="submit">Delete order</button>
-                              </form>
-                              <form action="/update" method="post">
-                                <input type="hidden" name="orderId" value="<%= data.orderId %>">
-                                <button type="submit">Update Order</button>
-                              </form>
-                          
-                              <a href="/download-pdf/<%= data.orderId%>">Download</a>
-                        </td>
-                        
-                    </tr>
-                <%})%>
-            <% }else {%>
-                No products available!
-            <%}%>
-        </tbody>
-    </table>
+    <div class = "logo">
+        <img src="./Images/logo.png" alt="">
+        <a href="/mlogin">
+            <button class="logout">logout</button>
+        </a>
+    </div>
+        
+    <div class="conatiner">
+        <nav>
+            
+                <h2 class="greet" style="text-align: center;">  Hello Owners! </h2>
+              
+        </nav>
+        <div class="heading">
+            <h2 id="orders">  Your today's orders are :</h2>
+        </div>
+            <div class="backgr">
 
+            </div>
+            <div class="backgr2">
+
+            </div>
+            <table>
+                <%if(orders.length > 0) {%>
+                <thead>
+                    <tr >
+                        <th id="orderid">OrderId</th>
+                        <th id="UserName">User Name</th>
+                        <th id="FileName">File Name</th>
+                        <th id="Stationary">Stationary</th>
+                        <th id="Preference">Preference</th>
+                        <th id="Price">Price</th>
+                        <th id="Status">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <%orders.forEach((data) => {%>
+                            <tr>
+                                <td class="data"><%= data.orderId%></td>
+                                <td class="data"><%= data.UserName%></td>
+                                <td class="data"><%= data.fileName%></td>    
+                                <td class="data"><%= data.stationary%></td>
+                                <td class="data"><%= data.preference%></td>
+                                <td class="data"><%= data.price%>rs</td>
+                                <td>
+                                    <form action="/update" method="post">
+                                        <input type="hidden" name="orderId" value="<%= data.orderId %>">
+                                        <button type="submit" class="complete">Done</button>
+                                    </form>
+                                    <form action="/delete" method="post">
+                                        <input type="hidden" name="orderId" value="<%= data.orderId %>">
+                                        <button type="submit" class="cancel">Reject order</button>
+                                      </form>
+                                  
+                                      <a id="download" href="/download-pdf/<%= data.orderId%>">Download</a>
+                                </td>
+                                
+                            </tr>
+                        <%})%>
+                    <% }else {%>
+                        No products available!
+                    <%}%>
+                </tbody>
+            </table>
+        </body>
+        </html>
 </body>
 </html>

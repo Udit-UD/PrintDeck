@@ -85,7 +85,7 @@ table{
     width: 100%;
     display: flex;
 }
-#part3 > button{
+#part3> form > button{
     width: 44%;
     padding: 10px;
     border: 0px;
@@ -114,7 +114,7 @@ table{
 form{
     width: 44%;
 }
-#part3> button:hover{
+#part3> form > button:hover{
     background-color: green;
 }
 #part3 > form >.terminate:hover{

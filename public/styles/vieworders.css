@@ -4,7 +4,7 @@
 }
 .main{
     height: 100%;
-    position: relative;
+    /* position: relative; */
     z-index: -1;
 }
 .bg{
@@ -17,7 +17,6 @@
     border-bottom-left-radius: 1000px;
     border-bottom-right-radius: 1000px;
     z-index: -1;
-
 }
 .container{
     display: flex;
