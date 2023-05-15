@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&family=Instrument+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/vieworders.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <title>View Orders | PrintDeck</title>
+</head>
+<body>
+    <div class="main">
+    {{>header Link= "/logout" tag= "Logout"}}
+
+        <div class="bg">
+
+        </div>
+        <div class="container">
+            <h1 class="primary">
+                Your Order's status is: 
+            </h1>
+            {{#each record}}
+            <div class="item">
+                <div class="part1">
+                    <img src="./Images/pdfimage.png" alt="" srcset="">
+                </div>
+                <div class="part2">
+                    <ul>
+                        <li class="head">File name: <p style="color: green;">{{this.filename}}</p>        </li>
+                        <li class="head">Number Of Pages: <p style="color: green;">{{this.numPages}}</p>    </li>
+                        <li class="head">Price: <p style="color: green;">{{this.price}}</p>              </li>
+                        <li class="head">Status: <p style="color: green;">{{this.status}}</p>             </li>
+                        <li class="head">Stationary: <p style="color: green;">{{this.stationary}}</p>         </li>
+                    </ul>
+                 
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

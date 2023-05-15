@@ -10,8 +10,6 @@ const hbs = require("hbs");
 const bodyParser = require("body-parser");
 
 
-
-
 // controllers
 
 const authController = require("./Controllers/Auth.controller");
@@ -33,12 +31,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+app.set("view engine", "ejs");
 app.set("view engine", "hbs")
 app.set("views", template_path);
 hbs.registerPartials(partial_path);
 
 app.get("/", (req, res) => {
     res.status(201).render("login");
+})
+
+app.get("/home", (req, res) => {
+    res.status(201).render("home");
 })
 
 
@@ -85,11 +88,16 @@ app.get('/accessed', auth ,(req, res) => {
     res.status(201).render("index");
 })
 
+app.get('/vieworders',auth, async(req, res) => {
+    const userID = req.userID;
+    orderController.clientOrder(req, res, userID);
+})
+
 app.get('/dashboard', auth, (req, res) => {
     res.status(201).render("dashboard");
 })
 
-app.get("/aboutus", (req, res) => {
+app.get("/aboutus",auth, (req, res) => {
     res.status(200).render("aboutus");
 })
 app.get("/contactus", (req, res)=>{
@@ -107,6 +115,9 @@ app.post("/upload", auth, upload.single("fileName") , async(req, res) => {
     }
 })
 
+app.post("/terminate", (req, res)=> {
+    orderController.terminateOrder(req, res);
+});
 
 // --------------------------------- For Stationary Owner ---------------------------------
 app.get("/mlogin", (req, res) => {
@@ -118,17 +129,26 @@ app.post("/mlogin", (req, res) => {
 });
 
 app.get("/mdashboard", (req, res) => {
-    res.status(200).render("mdashboard");
+    orderController.viewOrders(req, res);
 })
 
 app.post("/delete", async(req, res)=>{
-    req.body.orderID = "6461080f63951d8d30a0a449";
     orderController.deleteOrder(req,res);
 })
 
 app.post("/update", async(req, res)=>{
-    req.body.orderId = "64611761589f71adfe3d80a0";
     orderController.completeOrder(req, res);
+})
+
+app.get('/download-pdf/:fileId', async (req, res) => {
+    const orderId = req.params.fileId;
+    console.log(orderId);
+    orderController.downloadFile(req, res, orderId);
+    
+  });
+
+app.get("*", (req, res) => {
+    res.status(404).send("404 Page not found");
 })
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}`)

@@ -50,6 +50,8 @@ module.exports = {
             const email = req.body.email;
             const password = req.body.password;
             const details = await Auth.findOne({email: email});
+            const name = details.name;
+            console.log(name);
             if(!details){
                 throw createError.NotFound("User not registered!");
             }
@@ -62,7 +64,7 @@ module.exports = {
                 httpOnly: true, 
             })
             if(isMatch){
-                res.status(200).render("home");
+                res.status(200).render("home", {name: name});
             }else{
                 throw createError.Unauthorized("Password is incorrect!");
             }

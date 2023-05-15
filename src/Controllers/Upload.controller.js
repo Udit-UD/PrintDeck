@@ -25,6 +25,7 @@ module.exports = {
             })
             try{
                 newOrder.save();
+                console.log(newOrder._id);
                 const user = await Creds.findOne({_id:userID});
                 user.order_IDs.push(newOrder._id);
                 await user.save();
@@ -33,7 +34,8 @@ module.exports = {
                                                     fileName: req.file.originalname, 
                                                     colorPreference: preferences, 
                                                     stationary: stationary,
-                                                    price: price});
+                                                    price: price, 
+                                                    orderId: newOrder._id});
             }
             catch(e){
                 console.log(e);

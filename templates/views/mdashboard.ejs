@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mDashboard</title>
+</head>
+<body>
+    <table>
+        <%if(orders.length > 0) {%>
+        <thead>
+            <tr>
+                <th>OrderId</th>
+                <th>User Name</th>
+                <th>File Name</th>
+                <th>Stationary</th>
+                <th>Preference</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+                <%orders.forEach((data) => {%>
+                    <tr>
+                        <td><%= data.orderId%></td>
+                        <td><%= data.UserName%></td>
+                        <td><%= data.fileName%></td>    
+                        <td><%= data.stationary%></td>
+                        <td><%= data.preference%></td>
+                        <td><%= data.price%></td>
+                        <td>
+                            <form action="/delete" method="post">
+                                <input type="hidden" name="orderId" value="<%= data.orderId %>">
+                                <button type="submit">Delete order</button>
+                              </form>
+                              <form action="/update" method="post">
+                                <input type="hidden" name="orderId" value="<%= data.orderId %>">
+                                <button type="submit">Update Order</button>
+                              </form>
+                          
+                              <a href="/download-pdf/<%= data.orderId%>">Download</a>
+                        </td>
+                        
+                    </tr>
+                <%})%>
+            <% }else {%>
+                No products available!
+            <%}%>
+        </tbody>
+    </table>
+
+</body>
+</html>

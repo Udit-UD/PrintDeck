@@ -52,7 +52,8 @@
                     <button type="submit">Proceed To Payment</button>
                     
                     <form action="/terminate" method="POST">
-                        <button type="submit"  class="terminate">Go Back</button>
+                        <input type="hidden" name="orderId" value="{{orderId}}">
+                        <button type="submit" class="terminate">Go Back</button>
                     </form>
     
                 </div>
