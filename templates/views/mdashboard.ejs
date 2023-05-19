@@ -37,6 +37,8 @@
         height: auto;
     }
     .heading{
+    display: flex;
+    justify-content: space-between;
     position: relative;
     padding: 9px 82px;
     left :-66px;
@@ -83,7 +85,7 @@
 
 
     button{
-        padding: 3px 5px;
+        padding: 3px 5px;   
         width: 100px;
         border-radius: 10px;
         border: 2px solid white;
@@ -154,6 +156,7 @@
         </nav>
         <div class="heading">
             <h2 id="orders">  Your today's orders are :</h2>
+            <h2 id="orders">Your today's earning is: <span style="color: green;"><%=total%>rs</span> </h2>
         </div>
             <div class="backgr">
 
@@ -199,7 +202,12 @@
                             </tr>
                         <%})%>
                     <% }else {%>
-                        No products available!
+                        <div class="center">
+                            <h2 style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                                No products available!
+                            </h2>
+                        </div>
+                        
                     <%}%>
                 </tbody>
             </table>

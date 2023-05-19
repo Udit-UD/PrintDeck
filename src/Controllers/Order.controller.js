@@ -1,37 +1,48 @@
 const orders = require("../models/Upload");
 const User = require("../models/Creds");
-
+const completedOrders = require("../models/CompletedOrders")
 module.exports = {
-    viewOrders: async(req, res) => {
+    viewOrders: async (req, res) => {
         try {
-            const availableOrders = await orders.find({ orderStatus: false });
-            const availOrder = [];
-            await Promise.all(availableOrders.map(async (doc) => {
-                const name = await User.findById(doc.userID);
-                availOrder.push({
-                  orderId: doc._id,
-                  fileName: doc.fileName,
-                  UserName: name.name,
-                  preference: doc.preferences,
-                  price: doc.price,
-                  stationary: doc.stationary
-                });
-                
-              }));
-              res.status(200).render("mdashboard.ejs", {orders: availOrder});
+          let result = 0;
+          const documents = await completedOrders.find({});
+          documents.forEach(function(doc) {
+            result += doc.price;
+          });
+      
+      
+          const availableOrders = await orders.find({ orderStatus: false });
+          const availOrder = [];
+          await Promise.all(
+            availableOrders.map(async (doc) => {
+              const name = await User.findById(doc.userID);
+              availOrder.push({
+                orderId: doc._id,
+                fileName: doc.fileName,
+                UserName: name.name,
+                preference: doc.preferences,
+                price: doc.price,
+                stationary: doc.stationary,
+                total: result,
+              });
+            })
+          );
+          res.status(200).render("mdashboard.ejs", { orders: availOrder, total: result });
         } catch (error) {
-            console.log(error);
+          console.log(error);
         }
-        
-    },
+      },
+      
     deleteOrder: async(req, res) => {
         
         const orderId = req.body.orderId;
         try{
             const delOrder = await orders.findOneAndDelete({_id: orderId});
+
             if(!delOrder){
                 return res.status(200).json({error: "sorry"});
             }
+
             const user = await User.findByIdAndUpdate(
                 delOrder.userID,    
                 {$pull: {order_IDs: orderId}}, {new: true}
@@ -70,7 +81,18 @@ module.exports = {
         try{
             const updateOrder = await orders.updateOne({_id: orderId}, {$set: {orderStatus}});
             const details = await orders.findById({_id: orderId});
-
+            const delOrder = await orders.findById({_id:orderId});
+            const doneOrder = new completedOrders({
+                userID: delOrder.userID,
+                fileName: delOrder.fileName,
+                preferences: delOrder.preferences,
+                stationary: delOrder.stationary,
+                numPages: delOrder.numPages, 
+                price: delOrder.price, 
+                orderStatus: delOrder.orderStatus
+            });
+            doneOrder.save();
+            console.log("Order Completed!")
             if(!updateOrder){
                 return res.status(200).json({error: "sorry"});
             }
@@ -126,6 +148,7 @@ module.exports = {
             }
           
             const pendingOrders = await orders.find({ _id: { $in: orderIds } });
+            
             const record = [];
             pendingOrders.forEach((data) => {
               record.push({
