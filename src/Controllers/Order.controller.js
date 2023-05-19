@@ -75,10 +75,10 @@ module.exports = {
                 return res.status(200).json({error: "sorry"});
             }
             
-            const user = await User.findByIdAndUpdate(
-                details.userID, 
-                {$pull: {order_IDs: orderId}}, {new: true}
-            );
+            // const user = await User.findByIdAndUpdate(
+            //     details.userID, 
+            //     {$pull: {order_IDs: orderId}}, {new: true}
+            // );
             console.log("Order Status Updated!");
             res.redirect(303, "/mdashboard");
         }catch(e){
@@ -116,7 +116,7 @@ module.exports = {
         try {
             const user = await User.findById(userID);
             if (!user) {
-              return res.status(404).json("User not found");
+              return res.status(404).render("vieworders",{record: " "});
             }
           
             const orderIds = user.order_IDs;

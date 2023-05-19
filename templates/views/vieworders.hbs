@@ -33,8 +33,14 @@
                     <ul>
                         <li class="head">File name: <p style="color: green;">{{this.filename}}</p>        </li>
                         <li class="head">Number Of Pages: <p style="color: green;">{{this.numPages}}</p>    </li>
-                        <li class="head">Price: <p style="color: green;">{{this.price}}</p>              </li>
-                        <li class="head">Status: <p style="color: green;">{{this.status}}</p>             </li>
+                        <li class="head">Price: <p style="color: green;"> {{this.price}}rs</p>              </li>
+                        <li class="head">Status: <p style="color: green;"> 
+                            {{#if this.status}}
+                            Completed!</p>           
+                            {{else}}
+                            Processing</p>
+                            {{/if}}
+                        </li>
                         <li class="head">Stationary: <p style="color: green;">{{this.stationary}}</p>         </li>
                     </ul>
                  
