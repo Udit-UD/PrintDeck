@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&family=Instrument+Sans&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/myorders.css">
+    <link rel="stylesheet" href="./myorders.css">
 </head>
 <body>
     <div class="navbar">
@@ -24,18 +24,17 @@
             {{#each record}}
             <div class="order-table">
                 <div class="left">
-                    <img src="./Images/pdfimage.png" alt="">
+                    <img src="./public/Images/pdfimage.png" alt="">
                 </div>
                 <div class="right">
                     <ul>
                         <li style="font-weight:bolder; padding-top: 3px; font-size: 1.2rem; color: black;">{{this.filename}}</li>
-                        <li>{{this.numPages}} pages</li>
+                        <li>{{thsi.numPages}} pages</li>
                         <li>{{this.price}}rs</li>
                         {{#if this.status}}
                         <li style="color: green">Completed</li>
                         {{else}}
                         <li style="color: red">Processing</li>
-                        {{/if}}
                         <li>{{this.stationary}}</li>
                     </ul>
                 </div>

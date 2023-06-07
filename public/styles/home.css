@@ -1,0 +1,119 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.container{
+    background: linear-gradient(rgba(0, 0, 0, 0.434), rgba(0, 0, 0, 0.5)), url("../Images/background.jpg") no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    filter: blur(1px);
+}
+.navigation{
+    background-color: rgb(250 250 250 / 14%);
+}
+#nav-bar{
+    padding: 0px;
+}
+
+.primary{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.5rem;
+}
+.secondary{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.0rem;
+    padding: 0px 0px 15px 0px;
+    color: black;
+}
+.long{
+    font-size: 1.0rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0px 10px;
+}
+.section{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    height: 50%;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #ffffff2b;
+    border-radius: 20px;
+}
+
+.GET {
+    border: 0px white;
+    color: white;
+    padding: 19px 7px;
+    /* margin: 9px 28px; */
+    font-size: 23px;
+    border-radius: 11px;
+    background-color: rgb(218 89 31);
+    width: 150px;
+
+
+}
+
+.GET:hover {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    animation-name: GET;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+    animation-direction: initial;
+
+}
+
+.get {
+
+    bottom: 100px;
+
+    padding: 33px 0px;
+    margin: 25px 0px;
+    width: 250px;
+    height: 16px;
+
+}
+
+@keyframes GET {
+    to {
+        width: 150px;
+    }
+
+    from {
+        width: 200px;
+    }
+
+}
+
+@keyframes GET {
+    to {
+        width: 250px;
+
+    }
+
+    25% {
+        color: rgba(255, 255, 255, 0.884);
+    }
+
+    from {
+        width: 150px;
+
+    }
+
+    100% {
+        background-color: rgb(53, 181, 232);
+
+    }
+}

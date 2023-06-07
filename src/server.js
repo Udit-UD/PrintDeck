@@ -37,11 +37,11 @@ app.set("views", template_path);
 hbs.registerPartials(partial_path);
 
 app.get("/", (req, res) => {
-    res.status(201).render("login");
+    res.status(201).render("landing");
 })
 
 app.get("/home", auth ,(req, res) => {
-    res.status(201).render("home");
+    res.status(201).render("home", {name: req.user.name});
 })
 
 
@@ -82,6 +82,7 @@ app.get("/logout", auth, async(req, res) =>{
 });
 
 
+
 // Pages after Authentications!
 
 app.get('/accessed', auth ,(req, res) => {
@@ -102,7 +103,7 @@ app.get("/success", auth, (req, res) => {
     res.status(201).render("orderPlaced");
 })
 
-app.get("/aboutus",auth, (req, res) => {
+app.get("/aboutus", (req, res) => {
     res.status(200).render("aboutus");
 })
 app.get("/contactus", (req, res)=>{
@@ -129,6 +130,8 @@ app.post("/terminate", (req, res)=> {
 app.get("/mlogin", (req, res) => {
     res.status(200).render("mlogin");
 });
+
+
 
 app.post("/mlogin", (req, res) => {
     authController.mlogin(req, res);
