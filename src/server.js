@@ -44,8 +44,6 @@ app.get("/home", auth ,(req, res) => {
     res.status(201).render("home", {name: req.user.name});
 })
 
-
-
 // -----------------------------------------For Client -------------------------
 
 // ----------LOGIN------------
@@ -99,7 +97,9 @@ app.get('/dashboard', auth, (req, res) => {
     res.status(201).render("dashboard");
 })
 
-app.get("/success", auth, (req, res) => {
+app.get("/success/:orderID", auth, async(req, res) => {
+    const orderID = req.params.orderID;
+    uploadController.addOrder(req, res, orderID)
     res.status(201).render("orderPlaced");
 })
 
@@ -115,7 +115,7 @@ app.get("/contactus", (req, res)=>{
 app.post("/upload", auth, upload.single("fileName") , async(req, res) => {
     try{
         console.log(req.file);
-        await uploadController.addOrder(req, res, req.userID);
+        await uploadController.tempAddOrder(req, res, req.userID);
     }catch(e){
         console.log(e); 
     }
@@ -130,8 +130,6 @@ app.post("/terminate", (req, res)=> {
 app.get("/mlogin", (req, res) => {
     res.status(200).render("mlogin");
 });
-
-
 
 app.post("/mlogin", (req, res) => {
     authController.mlogin(req, res);
@@ -154,11 +152,24 @@ app.get('/download-pdf/:fileId', async (req, res) => {
     console.log(orderId);
     orderController.downloadFile(req, res, orderId);
     
-  });
+});
+
+app.get("/mlogout", auth, async(req, res) => {
+    try{
+        res.clearCookie("jwt");
+        console.log("Owner logOut");
+        // await req.user.save();
+        res.status(200).render("mlogin");
+    }catch(e){
+        res.send(e);
+    }
+});
 
 app.get("*", (req, res) => {
     res.status(404).send("404 Page not found");
 })
+
+
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}`)
 })

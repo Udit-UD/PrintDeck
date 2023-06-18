@@ -32,7 +32,7 @@ module.exports = {
                 console.log(`The token is: ${token}`)
                 console.log("Saved!")
                 res.cookie("jwt", token, {
-                    expires: new Date(Date.now() + 5*60*60*100),
+                    expires: new Date(Date.now() + 20*60*1000),
                     httpOnly: true
                 })
                 res.status(201).render("login");
@@ -59,7 +59,7 @@ module.exports = {
             const token = await details.generateAuthToken();
     
             res.cookie("jwt", token, {
-                expires: new Date(Date.now() + 5*60*60*100),
+                expires: new Date(Date.now() + 20*60*1000),
                 httpOnly: true, 
             })
             if(isMatch){
@@ -85,12 +85,12 @@ module.exports = {
             const token = await details.generateAuthToken();
     
             res.cookie("jwt", token, {
-                expires: new Date(Date.now() + 5*60*60*100),
+                expires: new Date(Date.now() + 20*60*1000),
                 httpOnly: true, 
             });
 
             if(isMatch){
-                res.redirect(300, "/mdashboard");
+                res.status(200).redirect("/mdashboard");
             }else{
                 throw createError.Unauthorized("Password is incorrect!");
             }

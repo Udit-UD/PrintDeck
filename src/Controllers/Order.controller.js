@@ -97,10 +97,6 @@ module.exports = {
                 return res.status(200).json({error: "sorry"});
             }
             
-            // const user = await User.findByIdAndUpdate(
-            //     details.userID, 
-            //     {$pull: {order_IDs: orderId}}, {new: true}
-            // );
             console.log("Order Status Updated!");
             res.redirect(303, "/mdashboard");
         }catch(e){
@@ -110,21 +106,18 @@ module.exports = {
     },
     downloadFile: async(req, res, orderId) => {
         try {
-            // Find the document with the specified fileId
             const document = await orders.findById(orderId);
         
             if (!document) {
               return res.status(404).send('File not found');
             }
         
-            // Access the file data (assuming it's stored as a Binary object)
             const fileData = document.fileData;
             const fileName = document.fileName;
             if (!fileData || fileData.length === 0) {
                 return res.status(404).send('File data not found');
               }
           
-              // Stream the file to the client for download
               res.set('Content-Type', 'application/pdf');
               
               res.set('Content-Disposition', `attachment; filename="${fileName}"`);
@@ -159,7 +152,6 @@ module.exports = {
                 status: data.orderStatus,
               });
             });
-            console.log(record);
           
             res.status(200).render("vieworders", { record: record });
           } catch (error) {

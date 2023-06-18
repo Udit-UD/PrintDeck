@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Order Confirmation</title>
+    <link rel="icon" type="image/x-icon" href="./Images/favIcon.png">
     <style>
-        /* Styling for the pop-up message */
         h1{
             font-size: 1.5rem;
             color: green;
@@ -30,22 +30,22 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             z-index: 9999;
         }
+        button{
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1>Order Confirmation Page</h1>
 
-    <!-- Pop-up message container -->
     <div id="popupContainer" class="popup">
         <h2>Order Confirmed!</h2>
         <p>Your order has been successfully confirmed.</p>
     </div>
 
-    <!-- Button to trigger the pop-up message -->
-    <button onclick="showPopupAndRedirect()">Confirm Order</button>
+    <button onclick="showPopupAndRedirect()" >Confirm Order</button>
 
     <script>
-        // Function to display the pop-up message
         function showPopupAndRedirect() {
             var popup = document.getElementById("popupContainer");
             popup.style.display = "block";

@@ -11,11 +11,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./Images/favIcon.png">
+
     
     
 </head>
 <body>
-    {{>header Link= "/logout" tag= "Logout"}}
+    {{>header Link= "/logout" tag= "Logout" orders= "y"}}
 
     <section class="container">
         <div class= "parts" id="section-1">
@@ -71,6 +73,7 @@
     fileUpload.addEventListener('change', function() {
         const files = this.files;
         if (files.length > 0) {
+            console.log(files);
             fileNameDisplay.textContent = files[0].name;
         } 
         else {

@@ -11,12 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="icon" type="image/x-icon" href="./Images/favIcon.png">
+
 </head>
 <body>
     
         {{#if name}}
         <div class="page">
-        {{>header Link= "/logout" tag= "Logout"}}
+        {{>header Link= "/logout" tag= "Logout" orders="y"}}
          <div class="container">
             <div class="left">
                 <div class="heading">

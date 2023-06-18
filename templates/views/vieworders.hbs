@@ -10,17 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@600&family=Instrument+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&family=Instrument+Sans&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/myorders.css">
+    <link rel="icon" type="image/x-icon" href="./Images/favIcon.png">
+
 </head>
 <body>
     <div class="navbar">
-        {{>header Link= "/logout" tag= "Logout"}}
+        {{>header Link= "/logout" tag= "Logout" orders="y"}}
     </div>
     <div class="main-container">
         <div class="box">
             <h1>Your Orders</h1>
+            {{#if record}}
             {{#each record}}
             <div class="order-table">
                 <div class="left">
@@ -41,6 +43,12 @@
                 </div>
             </div>
             {{/each}}
+            {{else}}
+                <hr>
+            <div style="margin-top: 15px;">
+                <h1 style="font-size: 1.2em;">Oops! You don't have any order.</h1>
+            </div>
+            {{/if}}
         </div>
         
     </div>

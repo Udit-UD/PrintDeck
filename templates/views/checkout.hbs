@@ -11,9 +11,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./Images/favIcon.png">
+
 </head>
 <body> 
-    {{>header Link= "/logout" tag= "Logout"}}
+    {{>header Link= "/logout" tag= "Logout" orders = "y"}}
     <div class="main">
 
         <div class="container">
@@ -49,10 +51,10 @@
                       </table>
                 </div>
                 <div id="part3">
+                                      
                   
-                    <form action="/success" method="GET">
-                        {{!-- <input type="hidden" name="orderId" value="{{orderId}}"> --}}
-                        <button type="submit" class="terminate">Pay On Delivery</button>
+                    <form action="/success/{{orderId}}" method="GET">
+                        <button type="submit" class="terminate payButton">Pay On Delivery</button>
                     </form>
                     
                     <form action="/terminate" method="POST">

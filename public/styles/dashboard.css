@@ -115,6 +115,10 @@ background-color: #42a3e3;
 .min-span>label{
     padding: 10px;
     font-size: 1.2rem;
+    font-family: 'Golos Text', sans-serif;
+    color: rgb(76, 74, 74);
+    
+
 }
 
 .proceed-btn{

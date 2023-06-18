@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./Images/favIcon.png">
+
     <title>shopkeeper</title>
     <style>
         *{
@@ -37,15 +39,15 @@
         height: auto;
     }
     .heading{
-    display: flex;
+        display: flex;
     justify-content: space-between;
     position: relative;
     padding: 9px 82px;
-    left :-66px;
+    width: 89%;
     font-size: 1.2rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 15px 0px;
-    color:rgb(67, 22, 22) ;
+    margin: 19px 0px;
+    color: rgb(67, 22, 22);
     }
     .backgr{
         position:absolute;
@@ -107,19 +109,23 @@
         color: white;
         border: 2px solid black;
         border-radius: 10px;
-        /* margin: 3px 2px; */
         padding: 2px 12px;
         background-color: rgb(255, 4, 4);
 
     }
     .logout{
-        background-color: rgb(255, 142, 22); 
+        background-color: rgb(255 108 4);
+        border: none;
         position: absolute;
         right: 5%;
-        padding: 5px;
-        font-size: 1.2rem;
+        padding: 10px 5px;
+        font-size: 0.9rem;
         font-weight: 600;
+        box-shadow: 8px 5px 5px #3838389e;
         border-radius: 25px;
+    }
+    .logout:hover{
+        background-color: rgb(171 73 3);
     }
 
     .backgr2{
@@ -143,8 +149,8 @@
 <body>
     <div class = "logo">
         <img src="./Images/logo.png" alt="">
-        <a href="/mlogin">
-            <button class="logout">logout</button>
+        <a href="/mlogout">
+            <button class="logout">Logout</button>
         </a>
     </div>
         
