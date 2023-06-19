@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./styles/login-css.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="icon" type="image/x-icon" href="./Images/favIcon.png">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
     <div class="background">        </div>
@@ -33,7 +33,10 @@
                 <form action="/mlogin" method="post">
                     <div class="form">
                         <input name= "email" type="email" placeholder="Email Address" style="margin-top: 25px;" >
-                        <input name= "password" type="password" placeholder="Password">
+                        <span>
+                            <input name= "password" type="password" id="id_password" placeholder="Password" style="width: 87%">
+                            <i class="far fa-eye" id="togglePassword" style="margin-left: -40px; cursor: pointer; color: grey"></i>
+                        </span>
                     </div>
                     <button type="submit" class="submit">mLogin</button>
                 </form>
@@ -44,4 +47,14 @@
         </div>
     </section>
 </body>
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+
+  togglePassword.addEventListener('click', function (e) {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+});
+</script>
 </html>

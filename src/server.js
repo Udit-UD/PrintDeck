@@ -158,7 +158,6 @@ app.get("/mlogout", auth, async(req, res) => {
     try{
         res.clearCookie("jwt");
         console.log("Owner logOut");
-        // await req.user.save();
         res.status(200).render("mlogin");
     }catch(e){
         res.send(e);
