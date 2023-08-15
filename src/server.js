@@ -8,7 +8,7 @@ const auth = require("./Middleware/auth")
 const upload = require("./Middleware/uploads");
 const hbs = require("hbs");
 const bodyParser = require("body-parser");
-
+const cors = require("cors");
 
 // controllers
 
@@ -21,6 +21,7 @@ const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views")
 const partial_path = path.join(__dirname, "../templates/partials")
 
+
 // MiddleWares!
 
 app.use(express.static(static_path));
@@ -30,6 +31,11 @@ app.use(express.urlencoded({extended:false}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(cors({
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods: ["POST", "PUSH"],
+    credentials: true
+}))
 
 app.set("view engine", "ejs");
 app.set("view engine", "hbs")

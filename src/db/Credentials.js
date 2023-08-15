@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
 mongoose
-    .connect("mongodb://127.0.0.1:27017/creds")
+    .connect("mongodb+srv://udgupta33:Uditmongo3@cluster0.p6qaizp.mongodb.net/creds?retryWrites=true&w=majority")
     .then(()=> {console.log("Connection Successful...")})
     .catch((e) => {console.log("Connection Failed...")})
