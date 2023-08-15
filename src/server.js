@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin: ["https://deploy-mern-1whq.vercel.app"],
+    origin: ["https://print-deck.vercel.app"],
     methods: ["POST", "PUSH"],
     credentials: true
 }))
