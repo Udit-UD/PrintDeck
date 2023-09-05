@@ -42,8 +42,12 @@ app.set("view engine", "hbs")
 app.set("views", template_path);
 hbs.registerPartials(partial_path);
 
-app.get("/", (req, res) => {
-    res.status(201).render("landing");
+// app.get("/", (req, res) => {
+//     res.status(201).render("landing");
+// })
+
+app.get("/", (req, res)=>{
+    res.send("I am alive!");
 })
 
 app.get("/home", auth ,(req, res) => {
